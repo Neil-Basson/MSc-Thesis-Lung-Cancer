@@ -49,8 +49,7 @@ MSc_Thesis_Lung_Cancer/
 │ └── unetpp_model.py
 │
 ├── README.md
-├── requirements.txt
-└── .gitignore
+└── requirements.txt
 ```
 
 ---
