@@ -2,12 +2,12 @@
 
 This repository contains the full code and model implementation for my MSc thesis:
 
-**"Analysing the Effect of Multi-Branch Deep Neural Networks on Pulmonary Nodule Classification"**  
+**"Analysing the Effect of Multi-Branch Deep Neural Networks on Pulmonary Nodule Classification: A segmentation-guided feature fusion approach"**  
 University of Amsterdam – MSc in Data Science and Business Analytics
 
 ---
 
-## 🧠 Project Overview
+## Project Overview
 
 This project develops a complete deep learning pipeline for pulmonary nodule analysis on lung CT scans. It combines:
 
@@ -15,11 +15,11 @@ This project develops a complete deep learning pipeline for pulmonary nodule ana
 - **Semantic feature extraction** from binary tumor masks
 - **Malignancy classification** using a multi-branch neural network (MBNN)
 
-The goal is to evaluate how combining multiple inputs (image, mask, and features) affects classification accuracy and interpretability.
+The goal is to evaluate how combining multiple inputs (image, mask, and semantic features) affects classification accuracy and interpretability and also to see how classification accuracy is affected when using the segmentation model output as opposed to using the ground truth tumor masks created by the radiologists.
 
 ---
 
-## 🔍 Research Contributions
+## Research Contributions
 
 - Developed a segmentation-guided, multi-branch classification model using CT scans
 - Extracted 4 geometric features (compactness, solidity, diameter, spiculation proxy) from predicted masks
@@ -31,7 +31,8 @@ The goal is to evaluate how combining multiple inputs (image, mask, and features
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
+```
 MSc_Thesis_Lung_Cancer/
 ├── Segmentation_Model.ipynb
 ├── Classification_Models.ipynb
@@ -50,11 +51,11 @@ MSc_Thesis_Lung_Cancer/
 ├── README.md
 ├── requirements.txt
 └── .gitignore
-
+```
 
 ---
 
-## ⚙️ Setup & Usage
+## Setup & Usage
 
 1. Clone the repo:
    ```bash
@@ -78,7 +79,7 @@ MSc_Thesis_Lung_Cancer/
 ---
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 See `requirements.txt` for a full list. Key packages include:
 
@@ -99,7 +100,7 @@ pip install -r requirements.txt
 ---
 
 
-## 📊 Dataset
+## Dataset
 
 This project uses the **LIDC-IDRI** dataset, a publicly available collection of thoracic CT scans annotated by four board-certified radiologists. It contains over 1,000 patient scans and is commonly used in pulmonary nodule detection research.
 
@@ -110,7 +111,7 @@ To access the dataset, visit:
 
 - CT scans are resampled and normalized.
 - Lung regions are extracted using adaptive thresholding and morphological operations.
-- Nodule masks are created using a majority-vote approach: pixels are included in the mask if at least **2 out of 4** radiologists annotated them.
+- Nodule masks are created using a majority-vote approach: pixels are included in the mask using a 50% consensus of the radiologists who annotated them.
 - Tumor-centered crops of **64×64** pixels are extracted for classification.
 
 ### Dataset Splits
@@ -124,9 +125,9 @@ To access the dataset, visit:
 
 ---
 
-## 🧪 Evaluation Summary
+## Evaluation Summary
 
-### 🔹 Segmentation (U-Net++)
+### Segmentation (U-Net++)
 
 | Metric               | Score   |
 |----------------------|---------|
@@ -139,7 +140,7 @@ The U-Net++ model showed strong performance across all pixel-level metrics and s
 
 ---
 
-### 🔹 Classification (Ground Truth Masks as Input)
+### Classification (Ground Truth Masks as Input)
 
 | Model     | Accuracy | AUROC | F1 Score (Macro) | False Negatives |
 |-----------|----------|--------|------------------|------------------|
@@ -150,7 +151,7 @@ The MBNN improved classification accuracy and significantly reduced false negati
 
 ---
 
-### 🔹 Classification (Predicted Masks from Segmentation Model)
+### Classification (Predicted Masks from Segmentation Model)
 
 | Model     | Accuracy | AUROC | F1 Score (Macro) | False Negatives |
 |-----------|----------|--------|------------------|------------------|
@@ -160,11 +161,11 @@ Using segmentation-predicted masks instead of ground-truth masks resulted in a *
 
 ---
 
-## 📘 Thesis Document
+## Thesis Document
 
 This repository implements the deep learning pipeline developed for my MSc thesis:
 
-**"Analysing the Effect of Multi-Branch Deep Neural Networks on Pulmonary Nodule Classification"**  
+**"Analysing the Effect of Multi-Branch Deep Neural Networks on Pulmonary Nodule Classification: A segmentation-guided feature fusion approach"**  
 University of Amsterdam – MSc in Data Science and Business Analytics  
 Specialization: Business Analytics  
 Author: Neil Christean Basson  
