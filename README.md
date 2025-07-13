@@ -1,4 +1,4 @@
-# MSc_Thesis_Lung_Cancer
+# MSc Thesis: Automated Lung Cancer Detection
 
 This repository contains the full code and model implementation for my MSc thesis:
 
